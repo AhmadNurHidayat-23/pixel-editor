@@ -8,7 +8,7 @@ Editor pixel art interaktif berbasis Laravel 13. Antarmuka Swiss Editorial Minim
 
 Kanvas 16×16 dan 32×32 mendukung klik, sentuhan, drag, color picker, palet, penghapus, isi area, undo, redo, serta pembersihan dengan konfirmasi. Ekspor PNG transparan berukuran 512×512 tidak menyertakan garis grid. Galeri menyediakan pratinjau, buka, hapus, dan salin tautan.
 
-Karya disimpan di SQLite. Tautan lihat dan edit menggunakan token acak berbeda sepanjang 64 karakter. Pengunjung tautan lihat tidak memperoleh token edit. Koleksi pribadi terhubung dengan sesi browser, bukan akun pengguna; simpan tautan edit untuk mengakses karya dari perangkat lain. Siapa pun yang memiliki tautan edit dapat mengubah karya tersebut.
+Karya disimpan di SQLite. Tautan lihat dan edit menggunakan token acak berbeda sepanjang 64 karakter. Pengunjung tautan lihat tidak memperoleh token edit. Koleksi mengikuti sesi browser. Akses lintas perangkat memerlukan deployment bersama; tautan localhost berlaku pada komputer server. Simpan tautan edit untuk akses ulang. Siapa pun yang memiliki tautan edit dapat mengubah karya tersebut.
 
 ## Teknologi dan struktur
 

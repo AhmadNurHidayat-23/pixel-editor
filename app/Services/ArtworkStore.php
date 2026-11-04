@@ -19,7 +19,7 @@ class ArtworkStore
     {
         DB::transaction(function () use ($artwork, $data): void {
             // Atomic JSON updates preserve pixels changed by another collaborator.
-            foreach (array_chunk($data['changes'] ?? [], 100) as $chunk) {
+            foreach (array_chunk($data['changes'] ?? [], 50) as $chunk) {
                 $pairs = [];
                 $bindings = [];
                 foreach ($chunk as $change) {
