@@ -142,4 +142,26 @@ class ArtworkTest extends TestCase
         $this->patchJson(route('shared.update', $artwork->edit_token), ['name' => 'Lain'])->assertTooManyRequests();
         $this->assertSame('Demo', $artwork->fresh()->name);
     }
+
+    public function test_artwork_helpers_and_scopes(): void
+    {
+        $artwork16 = Artwork::factory()->create([
+            'size' => 16,
+            'pixels' => array_fill(0, 256, null),
+        ]);
+        $artwork32 = Artwork::factory()->create([
+            'size' => 32,
+            'pixels' => array_fill(0, 1024, null),
+        ]);
+
+        $this->assertTrue($artwork16->isGridSize(16));
+        $this->assertFalse($artwork16->isGridSize(32));
+        $this->assertSame(256, $artwork16->totalPixels());
+
+        $this->assertTrue($artwork32->isGridSize(32));
+        $this->assertSame(1024, $artwork32->totalPixels());
+
+        $this->assertCount(1, Artwork::bySize(16)->where('id', $artwork16->id)->get());
+        $this->assertCount(1, Artwork::bySize(32)->where('id', $artwork32->id)->get());
+    }
 }

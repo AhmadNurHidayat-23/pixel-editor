@@ -22,4 +22,19 @@ class Artwork extends Model
     {
         return $this->only(['name', 'size', 'pixels', 'version']);
     }
+
+    public function totalPixels(): int
+    {
+        return is_array($this->pixels) ? count($this->pixels) : 0;
+    }
+
+    public function isGridSize(int $size): bool
+    {
+        return $this->size === $size;
+    }
+
+    public function scopeBySize($query, int $size)
+    {
+        return $query->where('size', $size);
+    }
 }
